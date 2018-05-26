@@ -1,0 +1,51 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans|Roboto");
+
+.selector-for-some-widget {
+  box-sizing: content-box;
+}
+
+.hero-header{
+  height: 100vh;
+}
+.bg-black{
+  background: black;
+}
+.centerP{
+  position: relative;
+}
+.centerC{
+  position: absolute;
+  right: 50%;
+  top: 50%;
+  -webkit-transform: translate(50%,-50%);
+  -moz-transform: translate(50%,-50%);
+  -ms-transform: translate(50%,-50%);
+  -o-transform: translate(50%,-50%);
+  transform: translate(50%,-50%);
+}
+.fab{
+  color: white;
+  font-size: 2em;
+  margin: .3em;
+}
+
+span{
+  color: white;
+  background: red;
+  font-size: 100px;
+}
+h1{
+  font-family: 'Roboto', sans-serif;
+}
+
+p{
+  font-family: 'Open Sans', sans-serif;
+  color: white;
+}
+
+.heroImg{
+  background-image: url("../img/shiba.jpg");
+  background-repeat: no-repeat;
+  background-position: 40%;
+  background-size: cover;
+}

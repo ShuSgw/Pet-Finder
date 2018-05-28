@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Pet Finder</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+  <div class="wrap">
+    <!-- nav -->
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+          <a class="navbar-brand" href="index.html">
+            <img id="logo" src="img/logo.png" alt="logo">
+          </a>
+          <button class="navbar-toggler" type="button" id="btn">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="index.html">Home</a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="dogs.html">Dogs<span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="cats.html">Cats</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="contact.html">Contact</a>
+              </li>
+            </ul>
+          </div>          
+        </div>
+      </nav>
+      <!-- nav end -->
+      <div class="container-fluid text-center">
+        <h1>Find Your Dogs</h1>
+        <div class="container">
+          <div class="row">
+            <div class="col-sm">
+              <div class="container">
+                <button type="button" class="btn btn-primary" id="dogBtn">Click Here</button>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm">
+              <img id="display" src="">
+            </div>
+            <div class="col-sm">
+              <img id="display2" src="">
+            </div>
+            <div class="col-sm">
+              <img id="display3" src="">
+            </div>
+          </div>
+        </div>
+      </div>
+<!-- <img src="holder.js/380x180"> -->
+      <footer class="text-center">
+          &copy;Created by Shuhei Shagawa
+      </footer>
+    </div>
+<!-- wrap end -->
+</body>
+<script src="main.js"></script>
+<script>
+  var dogBtn = document.getElementById('dogBtn');
+  console.log(btn);
+
+  dogBtn.addEventListener("click", ()=>{
+    fetch("https://dog.ceo/api/breeds/list/all")
+    .then(function(response) {
+      return response.json();
+    }).then(function(json) {
+      console.log(json.message);
+    })
+
+    fetch("https://dog.ceo/api/breed/shiba/images")
+    .then(function(response) {
+      return response.json();
+    }).then(function(json) {
+      console.log(json.message.length);
+      var sample = json.message;
+      var firstImg = Math.floor( Math.random() *  json.message.length) ;
+      var secImg = Math.floor( Math.random() *  json.message.length) ;
+      var thrdImg = Math.floor( Math.random() *  json.message.length) ;
+      document.getElementById("display").src=json.message[firstImg];
+      document.getElementById("display2").src=json.message[secImg];
+      document.getElementById("display3").src=json.message[thrdImg];
+    })
+
+  })
+</script>
+</html>

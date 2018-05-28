@@ -7,13 +7,10 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="css/style.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/holder/2.9.4/holder.js"></script>
 </head>
 <body>
   <div class="wrap">
-    <div class="heroImg positionRetive">
-
-      <!-- nav -->
+    <!-- nav -->
       <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
           <a class="navbar-brand" href="index.html">
@@ -24,11 +21,11 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav ml-auto">
-              <li class="nav-item active">
-                <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
-              </li>
               <li class="nav-item">
-                <a class="nav-link" href="dogs.html">Dogs</a>
+                <a class="nav-link" href="index.html">Home</a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="dogs.html">Dogs<span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="cats.html">Cats</a>
@@ -40,23 +37,39 @@
           </div>          
         </div>
       </nav>
-      <!-- nav -->
-      <div class="positionAbs text-center">
-        <h1>Pet Finder</h1>
-        <p>Find your pets you like</p>
-        <i class="fab fa-facebook-f"></i>
-        <i class="fab fa-twitter"></i>
-        <i class="fab fa-github"></i>
-        <i class="fab fa-codepen"></i>
+      <!-- nav end -->
+      <div class="container-fluid text-center">
+        <h1>Contact</h1>
+        <div class="container">
+          <div class="row">
+            <div class="col-sm">
+              <div class="container">
+                <button type="button" class="btn btn-primary" id="dogBtn">Send</button>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm">
+              <img id="display" src="">
+            </div>
+            <div class="col-sm">
+              <img id="display2" src="">
+            </div>
+            <div class="col-sm">
+              <img id="display3" src="">
+            </div>
+          </div>
+        </div>
       </div>
+<!-- <img src="holder.js/380x180"> -->
       <footer class="bottom_0 text-center">
           &copy;Created by Shuhei Shagawa
       </footer>
     </div>
-  </div>
-    <!-- hero end -->
-  </div>
 <!-- wrap end -->
 </body>
 <script src="main.js"></script>
+<script>
+
+</script>
 </html>

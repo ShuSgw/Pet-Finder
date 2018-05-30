@@ -28,9 +28,6 @@
                 <a class="nav-link" href="dogs.html">Dogs<span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="cats.html">Cats</a>
-              </li>
-              <li class="nav-item">
                 <a class="nav-link" href="contact.html">Contact</a>
               </li>
             </ul>
@@ -38,25 +35,58 @@
         </div>
       </nav>
       <!-- nav end -->
+      <div class="jumbotron">
+      </div>
       <div class="container-fluid text-center">
-        <h1>Find Your Dogs</h1>
         <div class="container">
+          <h1>Select Types of Dog and Click The Button</h1>
           <div class="row">
-            <div class="col-sm">
               <div class="container">
                 <button type="button" class="btn btn-primary" id="dogBtn">Click Here</button>
-              </div>
             </div>
           </div>
           <div class="row">
             <div class="col-sm">
-              <img id="display" src="">
+              <img class="display" src="">
             </div>
             <div class="col-sm">
-              <img id="display2" src="">
+              <img class="display" src="">
             </div>
             <div class="col-sm">
-              <img id="display3" src="">
+              <img class="display" src="">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm">
+              <img class="display" src="">
+            </div>
+            <div class="col-sm">
+              <img class="display" src="">
+            </div>
+            <div class="col-sm">
+              <img class="display" src="">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm">
+              <img class="display" src="">
+            </div>
+            <div class="col-sm">
+              <img class="display" src="">
+            </div>
+            <div class="col-sm">
+              <img class="display" src="">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm">
+              <img class="display" src="">
+            </div>
+            <div class="col-sm">
+              <img class="display" src="">
+            </div>
+            <div class="col-sm">
+              <img class="display" src="">
             </div>
           </div>
         </div>
@@ -74,12 +104,6 @@
   console.log(btn);
 
   dogBtn.addEventListener("click", ()=>{
-    fetch("https://dog.ceo/api/breeds/list/all")
-    .then(function(response) {
-      return response.json();
-    }).then(function(json) {
-      console.log(json.message);
-    })
 
     fetch("https://dog.ceo/api/breed/shiba/images")
     .then(function(response) {
@@ -87,12 +111,19 @@
     }).then(function(json) {
       console.log(json.message.length);
       var sample = json.message;
-      var firstImg = Math.floor( Math.random() *  json.message.length) ;
-      var secImg = Math.floor( Math.random() *  json.message.length) ;
-      var thrdImg = Math.floor( Math.random() *  json.message.length) ;
-      document.getElementById("display").src=json.message[firstImg];
-      document.getElementById("display2").src=json.message[secImg];
-      document.getElementById("display3").src=json.message[thrdImg];
+      var samples = document.getElementsByClassName("display");
+      console.log(samples);
+      elements = Array.from(samples);
+
+      elements.forEach( element =>{
+        var random = Math.floor( Math.random() *  json.message.length);
+        element.src = json.message[random];
+      });
+
+      // samples.forEach((sample)=>{
+      //   console.log(sample);
+      // })
+      // document.getElementsByClassName("display").src=json.message[firstImg];
     })
 
   })

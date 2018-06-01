@@ -39,9 +39,25 @@
       </div>
       <div class="container-fluid text-center">
         <div class="container">
-          <h1>Select Types of Dog and Click The Button</h1>
+          <h1>Select Type of Dogs and Click The Button</h1>
           <div class="row">
               <div class="container">
+                <p>
+                  <select id="selection" name="horoscope">
+                    <option value="affenpinscher">affenpinscher</option>
+                    <option value="african">african</option>
+                    <option value="Gemini">ふたご座</option>
+                    <option value="Cancer">かに座</option>
+                    <option value="Leo" selected>しし座</option>
+                    <option value="Virgo">おとめ座</option>
+                    <option value="Libra">てんびん座</option>
+                    <option value="Scorpio" disabled>さそり座</option>
+                    <option value="Saggitarius">いて座</option>
+                    <option value="Capricorn">やぎ座</option>
+                    <option value="Aquarius">みずがめ座</option>
+                    <option value="Pisces">うお座</option>
+                  </select>
+                </p>
                 <button type="button" class="btn btn-primary" id="dogBtn">Click Here</button>
             </div>
           </div>
@@ -101,31 +117,57 @@
 <script src="main.js"></script>
 <script>
   var dogBtn = document.getElementById('dogBtn');
-  console.log(btn);
 
   dogBtn.addEventListener("click", ()=>{
+    var selected = document.getElementById("selection").value;
 
-    fetch("https://dog.ceo/api/breed/shiba/images")
+    fetch(`https://dog.ceo/api/breed/spaniel/images`)
     .then(function(response) {
       return response.json();
     }).then(function(json) {
-      console.log(json.message.length);
-      var sample = json.message;
-      var samples = document.getElementsByClassName("display");
-      console.log(samples);
-      elements = Array.from(samples);
+        var sample = json.message;
+        var samples = document.getElementsByClassName("display");
+        var sampleLen = sample.length;
+        var a = 14;
+        while (sampleLen) {
+            var j = Math.floor( Math.random() * sampleLen );
+            //j=乱数 = 1
 
-      elements.forEach( element =>{
-        var random = Math.floor( Math.random() *  json.message.length);
-        element.src = json.message[random];
-      });
+            var t = sample[--sampleLen];
+            console.log(--a);
+            //json.messageの数だけマイナス
+            console.log(sample[sampleLen]);
 
-      // samples.forEach((sample)=>{
-      //   console.log(sample);
-      // })
-      // document.getElementsByClassName("display").src=json.message[firstImg];
+            sample[sampleLen] = sample[j];
+            //1,2,3 = sampleの乱数
+            sample[j] = t;
+            //
+        }
+
+        for(var i=0;i<samples.length;i++){
+            samples[i].src = sample[i]
+        }
     })
 
   })
+
+
+// var sample = json.message;
+// var samples = document.getElementsByClassName("display");
+
+// var sampleLen = sample.length;
+// while (sampleLen) {
+//     var j = Math.floor( Math.random() * sampleLen );
+//     var t = sample[--sampleLen];
+//     sample[sampleLen] = sample[j];
+//     sample[j] = t;
+// }
+
+// for(var i=0;i<samples.length;i++){
+//     samples[i].src = sample[i]
+// }
+
+//sampleにjson入れる
+//
 </script>
 </html>

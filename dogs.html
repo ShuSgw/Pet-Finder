@@ -44,18 +44,7 @@
               <div class="container">
                 <p>
                   <select id="selection" name="horoscope">
-                    <option value="affenpinscher">affenpinscher</option>
-                    <option value="african">african</option>
-                    <option value="Gemini">ふたご座</option>
-                    <option value="Cancer">かに座</option>
-                    <option value="Leo" selected>しし座</option>
-                    <option value="Virgo">おとめ座</option>
-                    <option value="Libra">てんびん座</option>
-                    <option value="Scorpio" disabled>さそり座</option>
-                    <option value="Saggitarius">いて座</option>
-                    <option value="Capricorn">やぎ座</option>
-                    <option value="Aquarius">みずがめ座</option>
-                    <option value="Pisces">うお座</option>
+
                   </select>
                 </p>
                 <button type="button" class="btn btn-primary" id="dogBtn">Click Here</button>
@@ -63,46 +52,46 @@
           </div>
           <div class="row">
             <div class="col-sm">
-              <img class="display" src="">
+              <img class="display hide">
             </div>
             <div class="col-sm">
-              <img class="display" src="">
+              <img class="display hide">
             </div>
             <div class="col-sm">
-              <img class="display" src="">
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-sm">
-              <img class="display" src="">
-            </div>
-            <div class="col-sm">
-              <img class="display" src="">
-            </div>
-            <div class="col-sm">
-              <img class="display" src="">
+              <img class="display hide">
             </div>
           </div>
           <div class="row">
             <div class="col-sm">
-              <img class="display" src="">
+              <img class="display hide">
             </div>
             <div class="col-sm">
-              <img class="display" src="">
+              <img class="display hide">
             </div>
             <div class="col-sm">
-              <img class="display" src="">
+              <img class="display hide">
             </div>
           </div>
           <div class="row">
             <div class="col-sm">
-              <img class="display" src="">
+              <img class="display hide">
             </div>
             <div class="col-sm">
-              <img class="display" src="">
+              <img class="display hide">
             </div>
             <div class="col-sm">
-              <img class="display" src="">
+              <img class="display hide">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm">
+              <img class="display hide">
+            </div>
+            <div class="col-sm">
+              <img class="display hide">
+            </div>
+            <div class="col-sm">
+              <img class="display hide">
             </div>
           </div>
         </div>
@@ -116,58 +105,47 @@
 </body>
 <script src="main.js"></script>
 <script>
-  var dogBtn = document.getElementById('dogBtn');
 
+  fetch(`https://dog.ceo/api/breeds/list/all`)
+  .then(function(response) {
+    return response.json();
+  }).then(function(json) {
+    var dognames = json.message;
+    for (key in dognames) {
+      var selected = document.getElementById("selection");
+      selected.insertAdjacentHTML('afterbegin', `<option>${key}</option>`);
+    }
+  })
+
+  var dogBtn = document.getElementById('dogBtn');
   dogBtn.addEventListener("click", ()=>{
     var selected = document.getElementById("selection").value;
 
-    fetch(`https://dog.ceo/api/breed/spaniel/images`)
+    fetch(`https://dog.ceo/api/breed/${selected}/images`)
     .then(function(response) {
       return response.json();
     }).then(function(json) {
-        var sample = json.message;
-        var samples = document.getElementsByClassName("display");
-        var sampleLen = sample.length;
-        var a = 14;
-        while (sampleLen) {
-            var j = Math.floor( Math.random() * sampleLen );
-            //j=乱数 = 1
+      
+        var dogImg = json.message;
+        var dogImgs = document.getElementsByClassName("display");
+        var dogImgLen = dogImg.length;
 
-            var t = sample[--sampleLen];
-            console.log(--a);
-            //json.messageの数だけマイナス
-            console.log(sample[sampleLen]);
+        while (dogImgLen) {
+            var j = Math.floor( Math.random() * dogImgLen );
+            var t = dogImg[--dogImgLen];
 
-            sample[sampleLen] = sample[j];
-            //1,2,3 = sampleの乱数
-            sample[j] = t;
-            //
+            console.log(dogImg[dogImgLen]);
+
+            dogImg[dogImgLen] = dogImg[j];
+            dogImg[j] = t;
         }
 
-        for(var i=0;i<samples.length;i++){
-            samples[i].src = sample[i]
+        for(var i=0;i<dogImgs.length;i++){
+            dogImgs[i].src = dogImg[i]
         }
     })
 
   })
 
-
-// var sample = json.message;
-// var samples = document.getElementsByClassName("display");
-
-// var sampleLen = sample.length;
-// while (sampleLen) {
-//     var j = Math.floor( Math.random() * sampleLen );
-//     var t = sample[--sampleLen];
-//     sample[sampleLen] = sample[j];
-//     sample[j] = t;
-// }
-
-// for(var i=0;i<samples.length;i++){
-//     samples[i].src = sample[i]
-// }
-
-//sampleにjson入れる
-//
 </script>
 </html>

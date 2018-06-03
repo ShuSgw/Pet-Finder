@@ -64,7 +64,7 @@ p{
   border-radius: 0;
 }
 
-.display{
+.sizing{
     width: 100%;
     height: 300px;
     -o-object-fit: cover;
@@ -74,4 +74,13 @@ p{
 .row{
   margin-bottom: 10em;
 }
+
+#navbar{
+  transition: all 0.8s ease-in-out;
+}
+
+.nav-link{
+  transition: all 0.1s ease-in-out;
+}
+
 

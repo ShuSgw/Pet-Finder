@@ -1,9 +1,12 @@
 var btn = document.getElementById("btn");
+var navbar = document.getElementById("navbar");
 btn.addEventListener('click', ()=>{
-  var hoge = document.getElementById("navbarText");
-  if (hoge.classList.contains("collapse")) {
-    hoge.classList.remove("collapse");
+  var hidenav = document.getElementById("navbarText");
+  if (hidenav.classList.contains("collapse")) {
+    navbar.classList.add("bg-white");
+    hidenav.classList.remove("collapse");
   }else{
-    hoge.classList.add("collapse");
+    navbar.classList.remove("bg-white");
+    hidenav.classList.add("collapse");
   }
 })

@@ -11,7 +11,7 @@
 <body>
   <div class="wrap">
     <!-- nav -->
-      <nav class="navbar navbar-expand-lg navbar-light">
+      <nav class="navbar navbar-expand-lg navbar-light" id="navbar">
         <div class="container">
           <a class="navbar-brand" href="index.html">
             <img id="logo" src="img/logo.png" alt="logo">
@@ -25,41 +25,49 @@
                 <a class="nav-link" href="index.html">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="dogs.html">Dogs</a>
+                <a class="nav-link" href="dogs.html">Dogs<span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item active">
-                <a class="nav-link" href="contact.html">Contact<span class="sr-only">(current)</a>
+                <a class="nav-link" href="contact.html">Contact</a>
               </li>
             </ul>
           </div>          
         </div>
       </nav>
       <!-- nav end -->
+      <div class="jumbotron"></div>
       <div class="container-fluid text-center">
         <h1>Contact</h1>
         <div class="container">
-          <div class="row">
             <div class="col-sm">
-              <div class="container">
-                <button type="button" class="btn btn-primary" id="dogBtn">Send</button>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-sm">
-              <img id="display" src="">
-            </div>
-            <div class="col-sm">
-              <img id="display2" src="">
-            </div>
-            <div class="col-sm">
-              <img id="display3" src="">
-            </div>
+                <div class="row">
+                    <div class="col-sm-6 mx-auto">
+                          <form class="form-horizontal">
+                              <div class="form-group text-left">
+                                  <input type="email" class="form-control" id="inputEmail" placeholder="Name">
+                              </div>
+                              <div class="form-group text-left">
+                                  <input type="password" class="form-control" id="inputPassword" placeholder="Email">
+                              </div>
+                              <div class="form-group">
+                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                              </div>
+                              <div class="form-group text-left">
+                                  <div class="checkbox">
+                                  <label><input type="checkbox"> Remember me</label>
+                                  </div>
+                              </div>
+
+                              <div class="form-group text-right">
+                                      <button type="submit" class="btn btn-primary">Send</button>
+                              </div>
+                      </form>
+                  </div>
+                </div>
           </div>
         </div>
       </div>
-<!-- <img src="holder.js/380x180"> -->
-      <footer class="bottom_0 text-center">
+      <footer class = "text-center">
           &copy;Created by Shuhei Shagawa
       </footer>
     </div>

@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans|Roboto");
 
+
 img {
     max-width: 300px;
 }
@@ -50,6 +51,7 @@ p{
   height: 100vh;
 }
 
+
 .bottom_0{
   position: absolute;
   bottom: 0%;
@@ -64,6 +66,10 @@ p{
   border-radius: 0;
 }
 
+.jumbImg2{
+  background-image: url("/img/contact.jpg");
+}
+
 .sizing{
     width: 100%;
     height: 300px;
@@ -72,15 +78,62 @@ p{
 }
 
 .row{
-  margin-bottom: 10em;
+  padding: 2em 0 2em 0;
 }
 
-#navbar{
-  transition: all 0.8s ease-in-out;
+h2{
+  padding: 1.5em 0 1.5em 0;
 }
 
-.nav-link{
-  transition: all 0.1s ease-in-out;
+.top_btm_padding{
+  padding: 2em 0 2em 0;
+}
+
+.fixed{
+  position: fixed;
+  width: 100%;
+  background: white;
+  z-index: 100;
+}
+
+.hide{
+  animation: fade 0.5s;
+}
+
+.display{
+  transition: all 1s;
+}
+.display:hover{
+  border-radius: 100%;
+  transform: scale(1.1);
+}
+.fade{
+  opacity: 0;
+  transform: translate(300px);
+}
+
+.wrap{
+  transition: all 1s;
+}
+
+.fadeNav{
+  animation: fade .1s;
 }
 
 
+@keyframes fade {
+  0% {
+    transform: translateX(100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .display{
+    margin: 1em 0 1em 0;
+  }
+}

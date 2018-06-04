@@ -8,10 +8,10 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
-<body>
-  <div class="wrap">
+<body">
+  <div class="wrap fade">
     <!-- nav -->
-      <nav class="navbar navbar-expand-lg navbar-light" id="navbar">
+      <nav class="navbar navbar-expand-lg navbar-light fixed" id="navbar">
         <div class="container">
           <a class="navbar-brand" href="index.html">
             <img id="logo" src="img/logo.png" alt="logo">
@@ -39,12 +39,12 @@
       </div>
       <div class="container-fluid text-center">
         <div class="container">
-            <h1>Select Type of Dogs and Click The Button</h1>
+            <h2>Dog Collections</h2>
           <div class="row">
               <div class="container">
+                <p class="text-secondary">To find dogs you want to see, select a name of dog, and click the bottom below. If you click more than onece, images will be shuffled.</p>
                 <p>
                   <select id="selection" name="horoscope">
-
                   </select>
                 </p>
                 <button type="button" class="btn btn-primary" id="dogBtn">Click Here</button>
@@ -52,51 +52,51 @@
           </div>
           <div class="row">
             <div class="col-sm">
-              <img class="display hide" alt="">
+              <img class="display">
             </div>
             <div class="col-sm">
-              <img class="display hide">
+              <img class="display">
             </div>
             <div class="col-sm">
-              <img class="display hide">
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-sm">
-              <img class="display hide">
-            </div>
-            <div class="col-sm">
-              <img class="display hide">
-            </div>
-            <div class="col-sm">
-              <img class="display hide">
+              <img class="display">
             </div>
           </div>
           <div class="row">
             <div class="col-sm">
-              <img class="display hide">
+              <img class="display">
             </div>
             <div class="col-sm">
-              <img class="display hide">
+              <img class="display">
             </div>
             <div class="col-sm">
-              <img class="display hide">
+              <img class="display">
             </div>
           </div>
           <div class="row">
             <div class="col-sm">
-              <img class="display hide">
+              <img class="display">
             </div>
             <div class="col-sm">
-              <img class="display hide">
+              <img class="display">
             </div>
             <div class="col-sm">
-              <img class="display hide">
+              <img class="display">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm">
+              <img class="display">
+            </div>
+            <div class="col-sm">
+              <img class="display">
+            </div>
+            <div class="col-sm">
+              <img class="display">
             </div>
           </div>
         </div>
       </div>
-      <footer class="text-center">
+      <footer class="text-center top_btm_padding top_btm_padding">
           &copy;Created by Shuhei Shagawa
       </footer>
     </div>
@@ -117,7 +117,9 @@
   })
 
   var dogBtn = document.getElementById('dogBtn');
+  var jdm;
   dogBtn.addEventListener("click", ()=>{
+
     var selected = document.getElementById("selection").value;
 
     fetch(`https://dog.ceo/api/breed/${selected}/images`)
@@ -128,12 +130,12 @@
         var dogImg = json.message;
         var dogImgs = document.getElementsByClassName("display");
         var dogImgLen = dogImg.length;
+        var bdanime = Math.floor(Math.random() * Math.floor(dogImgs.length));
 
         while (dogImgLen) {
             var j = Math.floor( Math.random() * dogImgLen );
             var t = dogImg[--dogImgLen];
-
-            console.log(dogImg[dogImgLen]);
+            // console.log(dogImg[dogImgLen]);
 
             dogImg[dogImgLen] = dogImg[j];
             dogImg[j] = t;
@@ -141,8 +143,10 @@
 
         for(var i=0;i<dogImgs.length;i++){
             dogImgs[i].src = dogImg[i];
+            dogImgs[i].classList.add('hide');
             dogImgs[i].classList.add('sizing');
         }
+
     })
 
   })

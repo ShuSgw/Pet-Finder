@@ -1,6 +1,8 @@
-@import url("https://fonts.googleapis.com/css?family=Open+Sans|Roboto");
+@import url("https://fonts.googleapis.com/css?family=Jua|Open+Sans|Roboto");
 
-
+option{
+  width: 10px;
+}
 img {
     max-width: 300px;
 }
@@ -34,8 +36,8 @@ img {
   margin: .3em;
 }
 
-h1{
-  font-family: 'Roboto', sans-serif;
+.font-jua{
+  font-family:'Jua', sans-serif;
 }
 
 p{
@@ -67,7 +69,7 @@ p{
 }
 
 .jumbImg2{
-  background-image: url("/img/contact.jpg");
+  background-image: url("../img/contact.jpg");
 }
 
 .sizing{
@@ -97,16 +99,18 @@ h2{
 }
 
 .hide{
-  animation: fade 0.5s;
+  animation: fadeImg 1.5s;
 }
 
 .display{
-  transition: all 1s;
+  transition: all .5s;
+  border-radius: 10%;
 }
 .display:hover{
-  border-radius: 100%;
-  transform: scale(1.1);
+  border-radius: 40%;
+  transform: scale(1.2);
 }
+
 .fade{
   opacity: 0;
   transform: translate(300px);
@@ -120,7 +124,11 @@ h2{
   animation: fade .1s;
 }
 
-
+.snsBox .fab:hover{
+  transition: all .5s;
+  color: black;
+  transform: scale(2);
+}
 @keyframes fade {
   0% {
     transform: translateX(100px);
@@ -128,6 +136,19 @@ h2{
   }
   100% {
     transform: translateX(0px);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeImg {
+  0% {
+    transform: translateX(100px);
+    transform: rotate(60deg);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0px);
+    transform: rotate(0deg);
     opacity: 1;
   }
 }

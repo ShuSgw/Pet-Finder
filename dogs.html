@@ -42,12 +42,11 @@
             <h2>Dog Collections</h2>
           <div class="row">
               <div class="container">
-                <p class="text-secondary">To find dogs you want to see, select a name of dog, and click the bottom below. If you click more than once, images will be shuffled.</p>
                 <p>
                   <select id="selection" name="horoscope" >
                   </select>
                 </p>
-                <button type="button" class="btn btn-primary" id="dogBtn">Click Here</button>
+                <button type="button" class="btn btn-primary" id="dogBtn">Search</button>
             </div>
           </div>
           <div class="row">
@@ -104,21 +103,27 @@
 </body>
 <script src="main.js"></script>
 <script>
-
+  var selected = document.getElementById("selection");
+  var dogBtn = document.getElementById('dogBtn');
+  selected.addEventListener("change",()=>{
+    dogBtn.classList.remove('btn-danger');
+    dogBtn.innerHTML="Search";
+  })
+  
   fetch(`https://dog.ceo/api/breeds/list/all`)
   .then(function(response) {
     return response.json();
   }).then(function(json) {
     var dognames = json.message;
     for (key in dognames) {
-      var selected = document.getElementById("selection");
       selected.insertAdjacentHTML('afterbegin', `<option>${key}</option>`);
     }
   })
 
-  var dogBtn = document.getElementById('dogBtn');
   var jdm;
   dogBtn.addEventListener("click", ()=>{
+    dogBtn.innerHTML = "Shuffle Images";
+    dogBtn.classList.add('btn-danger');
 
     var selected = document.getElementById("selection").value;
 
@@ -135,13 +140,16 @@
         while (dogImgLen) {
             var j = Math.floor( Math.random() * dogImgLen );
             var t = dogImg[--dogImgLen];
-            // console.log(dogImg[dogImgLen]);
 
             dogImg[dogImgLen] = dogImg[j];
             dogImg[j] = t;
         }
 
         for(var i=0;i<dogImgs.length;i++){
+
+          if(!dogImg[i]){
+            dogImgs[i].style.display="none";
+          }
             dogImgs[i].src = dogImg[i];
             dogImgs[i].classList.add('hide');
             dogImgs[i].classList.add('sizing');

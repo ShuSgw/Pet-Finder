@@ -150,14 +150,19 @@
           if(!dogImg[i]){
             dogImgs[i].style.display="none";
           }
-            dogImgs[i].src = dogImg[i];
-            dogImgs[i].classList.add('hide');
-            dogImgs[i].classList.add('sizing');
+          
+          dogImgs[i].classList.remove('hide');
+          setTimeout(reAnimation, 100, dogImgs[i], dogImg[i]);
         }
-
     })
-
   })
+
+function reAnimation(img, src) {
+  img.classList.add('hide'); 
+  img.classList.add('sizing');
+  img.src = src;
+}
+
 
 </script>
 </html>
